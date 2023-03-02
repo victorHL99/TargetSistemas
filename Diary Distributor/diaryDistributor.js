@@ -141,10 +141,24 @@ function diaryDistributor(diary) {
   let averageValue =
     arrayWithoutZero.reduce((a, b) => a + b.valor, 0) / arrayWithoutZero.length;
 
+  let arrayWithValueLagerThanAverage = 0;
+
+  arrayWithoutZero.forEach((item) => {
+    if (item.valor > averageValue) {
+      arrayWithValueLagerThanAverage++;
+    } else {
+      return;
+    }
+  });
+
   console.table(orderedDiary);
   console.log("The minimum value is: " + minValue);
   console.log("The maximum value is: " + maxValue);
   console.log("The average value is: " + averageValue);
+  console.log(
+    "The numbers of days with value larger than the average is: " +
+      arrayWithValueLagerThanAverage
+  );
 }
 
 diaryDistributor(diary);
